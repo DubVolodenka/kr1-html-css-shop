@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог товаров</title>
+  <title>Главная страница</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
   <meta property="og:type" content="website">
@@ -63,7 +63,7 @@
     <section class="section" id="popular">
       <h2>Популярные товары</h2>
 
-      <!-- ЗАМЕНЕНО: products-grid -> products-container -->
+   
       <div class="products-container">
         <article class="product-card product-card--featured">
           <h3 class="product-card__title">Товар 1</h3>
@@ -106,6 +106,77 @@
       </div>
     </section>
 
+    <section class="section" id="reviews">
+      <h2>Отзывы покупателей</h2>
+
+      <div class="reviews-list">
+        <article class="review-card">
+          <header class="review-card__header">
+            <h3 class="review-card__author">Анна К.</h3>
+            <p class="review-card__rating" aria-label="Оценка: 5 из 5">★★★★★</p>
+          </header>
+          <p class="review-card__text">Заказ пришёл быстро, всё соответствует описанию. Менеджер ответил на вопросы за пару минут.</p>
+          <p class="review-card__date">12 сентября 2026</p>
+        </article>
+
+        <article class="review-card">
+          <header class="review-card__header">
+            <h3 class="review-card__author">Дмитрий С.</h3>
+            <p class="review-card__rating" aria-label="Оценка: 4 из 5">★★★★☆</p>
+          </header>
+          <p class="review-card__text">Хороший товар за свою цену. Небольшая задержка с доставкой, но в целом доволен покупкой.</p>
+          <p class="review-card__date">28 сентября 2026</p>
+        </article>
+
+        <article class="review-card">
+          <header class="review-card__header">
+            <h3 class="review-card__author">Елена М.</h3>
+            <p class="review-card__rating" aria-label="Оценка: 5 из 5">★★★★★</p>
+          </header>
+          <p class="review-card__text">Удобный каталог и простое оформление заявки. Буду заказывать ещё.</p>
+          <p class="review-card__date">5 октября 2026</p>
+        </article>
+      </div>
+
+      <h3 class="reviews-form-title">Оставить отзыв</h3>
+
+      <form class="review-form" id="review-form" action="#" method="post" novalidate>
+        <div class="review-form__field">
+          <label class="review-form__label" for="review-name">Имя</label>
+          <input class="review-form__input" id="review-name" name="name" type="text"
+                 placeholder="Как вас зовут?" minlength="2" maxlength="40"
+                 autocomplete="given-name" required>
+          <small class="review-form__error" data-error-for="review-name" hidden></small>
+        </div>
+
+        <div class="review-form__field">
+          <label class="review-form__label" for="review-rating">Оценка</label>
+          <select class="review-form__input" id="review-rating" name="rating" required>
+            <option value="">Выберите оценку</option>
+            <option value="5">★★★★★ — отлично</option>
+            <option value="4">★★★★☆ — хорошо</option>
+            <option value="3">★★★☆☆ — нормально</option>
+            <option value="2">★★☆☆☆ — плохо</option>
+            <option value="1">★☆☆☆☆ — ужасно</option>
+          </select>
+          <small class="review-form__error" data-error-for="review-rating" hidden></small>
+        </div>
+
+        <div class="review-form__field review-form__field--wide">
+          <label class="review-form__label" for="review-text">Отзыв</label>
+          <textarea class="review-form__input" id="review-text" name="text" rows="4"
+                    placeholder="Расскажите о своём опыте" minlength="10" maxlength="500" required></textarea>
+          <small class="review-form__error" data-error-for="review-text" hidden></small>
+        </div>
+
+        <div class="review-form__actions">
+          <button class="button button--primary" type="submit">Отправить отзыв</button>
+        </div>
+      </form>
+
+      <p class="success-message" id="review-success" hidden>Спасибо! Ваш отзыв добавлен.</p>
+    </section>
+
     <aside class="aside-info">
       <h2>Информация для студентов</h2>
       <p>
@@ -123,6 +194,7 @@
 
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
     <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+    <p class="order-dialog__product" id="order-dialog-product"></p>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
       <input id="selected-product" name="selected-product" type="hidden">
@@ -226,5 +298,7 @@
   <p class="success-message" id="success-message" hidden>
     Форма успешно отправлена!
   </p>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Наверх" hidden>↑</button>
 </body>
 </html>
