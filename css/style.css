@@ -282,6 +282,7 @@ a:focus-visible {
    ========================================= */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 130px;
 }
 
 :target {
@@ -293,7 +294,11 @@ html {
    8. Навигация сайта (БЭМ)
    ========================================= */
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     background-color: var(--color-surface);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .site-header__inner {
@@ -402,4 +407,19 @@ html {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   font: inherit;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .catalog-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "filters"
+      "products";
+  }
 }
